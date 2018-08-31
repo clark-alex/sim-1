@@ -31,7 +31,7 @@ class Form extends Component {
     }
     
     render () {
-        // console.log('handleChange:', this.state)
+        // console.log('hi', this.state)
         return (
             <div>
                 <h1>Form</h1>
@@ -59,9 +59,15 @@ class Form extends Component {
                 </div>
                 <div>
                     <button
-                    onClick = {this.handleCancel}
+                        onClick = {this.handleCancel}
                     >Cancel</button>
-                    <button>Add to Inventory</button>
+                    <button
+                        onClick = {() => {
+                            let {imgURL, pName, pPrice} = this.state
+                            // console.log(pName)
+                            this.props.addToInventory(imgURL, pName, pPrice)
+                        }}
+                    >Add to Inventory</button>
                 </div>
                 
             </div>

@@ -16,9 +16,8 @@ class Dashboard extends Component {
             let productInfo = productInventory.map((item, index) => {
                 let {product_name, price, image_url} = item
                 return (
-                    <div>
+                    <div key = {index}>
                         <Product
-                        key = {index}
                         productName = {product_name}
                         price = {price}
                         imageURL = {image_url}

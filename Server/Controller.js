@@ -9,6 +9,13 @@ module.exports = {
         })
     },
 
+    addItem: (req, res) => {
+        let {imgURL, pName, pPrice} = req.body
+        res.status(200).send("pName")
+        console.log(pName)
+
+    }
+
 
 
 

@@ -23,13 +23,19 @@ class App extends Component {
     }))
   }
 
+  addToInventory = (imgURL, pName, pPrice) => {
+    axios.post('/api/product', {imgURL: imgURL, pName: pName, pPrice: pPrice})
+    // console.log(pName)
+  }
+  
   render() {
     return (
       <div className="App">
         <Dashboard
         productInventory = {this.state.productInventory}
         />
-        <Form/>
+        <Form
+        addToInventory = {this.addToInventory}/>
         <Header/>
       </div>
     );
