@@ -21,8 +21,11 @@ class Dashboard extends Component {
                         productName = {product_name}
                         price = {price}
                         imageURL = {image_url}
+                        key = {this.key}
                         />
+                        
                     </div>
+                    
                 )
             })
             return productInfo

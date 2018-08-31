@@ -39,7 +39,9 @@ class App extends Component {
       <div className="App">
         <Header/>
         <Form
-        addToInventory = {this.addToInventory}/>
+        addToInventory = {this.addToInventory}
+        updateProduct = {this.updateProduct}
+        />
         <Dashboard
         productInventory = {this.state.productInventory}
         />
