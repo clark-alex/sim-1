@@ -7,14 +7,16 @@ class Form extends Component {
         this.state = {
             imgURL: '',
             pName: '',
-            pPrice: ''
+            pPrice: '',
+            addButtonToggle: false
         }
         this.handleChange = this.handleChange.bind(this)
     }
 
     handleChange (val) {
         this.setState({
-            [val.target.name]: val.target.value
+            [val.target.name]: val.target.value,
+            addButtonToggle: true
             
         })
         
@@ -25,7 +27,8 @@ class Form extends Component {
         this.setState({
             imgURL: '',
             pName: '',
-            pPrice: ''
+            pPrice: '',
+            addButtonToggle: false
         })
     
     }
@@ -57,23 +60,38 @@ class Form extends Component {
                         onChange = {this.handleChange}
                         name = 'pPrice'/>
                 </div>
-                <div>
-                    <button
-                        onClick = {this.handleCancel}
-                    >Cancel</button>
-                    <button
-                        onClick = {() => {
-                            let {imgURL, pName, pPrice} = this.state
-                            // console.log(pName)
-                            this.props.addToInventory(imgURL, pName, pPrice)
-                            this.setState({
-                                imgURL: '',
-                                pName: '',
-                                pPrice: ''
-                            })
-                        }}
-                    >Add to Inventory</button>
-                </div>
+                {
+                    this.state.addButtonToggle
+                    ?
+                        <div>
+                            <button
+                                onClick = {this.handleCancel}
+                             >Cancel
+                            </button>
+                            <button
+                                onClick = {() => {
+                                    let {imgURL, pName, pPrice} = this.state
+                                    // console.log(pName)
+                                    this.props.addToInventory(imgURL, pName, pPrice)
+                                    this.setState({
+                                         imgURL: '',
+                                         pName: '',
+                                         pPrice: ''
+                                    })
+                                }}
+                            >Add to Inventory
+                            </button>
+                        </div>
+                    :
+                    <div>
+                        <button
+                            onClick = {this.handleCancel}
+                        >Cancel
+                        </button>
+                    </div>
+                    
+                }
+                
                 
             </div>
         )
