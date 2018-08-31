@@ -109,9 +109,9 @@ class Form extends Component {
                                     <input type="text"/>
                                     <button
                                         onClick = {()=> {
-                                            
                                             this.setState({editButtonToggle: false})
-                                        }} 
+                                        }
+                                    } 
                                     >Save Edit
                                     </button> 
                                 </div>
