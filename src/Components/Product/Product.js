@@ -5,7 +5,7 @@ function Product (props) {
 
     return (
         <div key = {key}>
-            <img src={imageURL} alt="Baby Grand Piano"/>
+            <img src={imageURL} alt="Where did my image go?"/>
             <h2>{productName}</h2>
             <h2>Price: ${price}</h2>
         </div>
