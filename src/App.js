@@ -3,6 +3,7 @@ import './App.css';
 import Header from './Components/Header/Header'
 import Dashboard from './Components/Dashboard/Dashboard'
 import Form from './Components/Form/Form'
+import axios from 'axios'
 
 class App extends Component {
   constructor (props) {
@@ -13,6 +14,13 @@ class App extends Component {
         
       ]
     }
+  }
+
+  componentDidMount () {
+    axios.get('/api/inventory')
+    .then(res => this.setState({
+      productInventory: res.data
+    }))
   }
 
   render() {
