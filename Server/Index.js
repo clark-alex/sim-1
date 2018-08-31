@@ -9,6 +9,13 @@ const PORT = 5600
 
 app.use(bodyParser.json())
 
+//******************************************************************* */
+
+app.get('/api/inventory', ctrl.getTheInventory)
+
+
+//********************************************************************* */
+
 massive(process.env.CONNECTION_STRING)
     .then( db => {
         app.set('db', db)

@@ -11,14 +11,32 @@ class Dashboard extends Component {
     }
 
     render () {
-        return (
-            <div>
-                <h1>Dashboard</h1>
-                <Product/>
-            </div>
-        )
+        let{productInventory} = this.props
+        if (productInventory.length > 0) {
+            let productInfo = productInventory.map((item, index) => {
+                let {product_name, price, image_url} = item
+                return (
+                    <div>
+                        <Product
+                        key = {index}
+                        productName = {product_name}
+                        price = {price}
+                        imageURL = {image_url}
+                        />
+                    </div>
+                )
+            })
+            return productInfo
+        }
+        else {
+            return (
+                <div>
+                    <h1>Dashboard</h1>
+                    <Product/>
+                </div>
+            )
+        }
     }
-
 }
 
 export default Dashboard
