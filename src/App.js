@@ -29,16 +29,20 @@ class App extends Component {
       productInventory: res.data
     }))
   }
+
+  updateProduct = () => {
+
+  }
   
   render() {
     return (
       <div className="App">
+        <Header/>
+        <Form
+        addToInventory = {this.addToInventory}/>
         <Dashboard
         productInventory = {this.state.productInventory}
         />
-        <Form
-        addToInventory = {this.addToInventory}/>
-        <Header/>
       </div>
     );
   }

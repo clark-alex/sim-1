@@ -8,7 +8,8 @@ class Form extends Component {
             imgURL: '',
             pName: '',
             pPrice: '',
-            addButtonToggle: false
+            addButtonToggle: false,
+            editButtonToggle: false
         }
         this.handleChange = this.handleChange.bind(this)
     }
@@ -31,6 +32,12 @@ class Form extends Component {
             addButtonToggle: false
         })
     
+    }
+
+    handleEditClick = () => {
+        this.setState({
+            editButtonToggle: true
+        })
     }
     
     render () {
@@ -84,15 +91,38 @@ class Form extends Component {
                         </div>
                     :
                     <div>
-                        <button
-                            onClick = {this.handleCancel}
-                        >Cancel
-                        </button>
+                        <div>
+                            <button
+                                onClick = {this.handleCancel}
+                            >Cancel
+                            </button>
+                        </div>
+                        <div>
+                            <button
+                                onClick = {this.handleEditClick}
+                            >Edit An Existing Product
+                            </button>
+                            {
+                                this.state.editButtonToggle
+                                ?
+                                <div>
+                                    <input type="text"/>
+                                    <button
+                                        onClick = {()=> {
+                                            this.setState({editButtonToggle: false})
+                                        }} 
+                                    >Save Edit
+                                    </button> 
+                                </div>
+                                :
+                                <p>Hi mom!</p>
+                            }
+                            
+                        </div>
                     </div>
                     
                 }
-                
-                
+                <hr/>
             </div>
         )
     }

@@ -6,11 +6,17 @@ function Product (props) {
 
     return (
         <div >
-            <img 
-            className = 'product_image'
-            src={imageURL} />
-            <h2>{productName}</h2>
-            <h2>Price: ${price}</h2>
+            <div>
+               <img 
+                    className = 'product_image'
+                    src={imageURL} />
+                <h2>{productName}</h2>
+                <h2>Price: ${price}</h2>  
+            </div>
+            {/* <div>
+                <button>Edit Product</button>
+            </div> */}
+            <hr/>
         </div>
     )
 }
