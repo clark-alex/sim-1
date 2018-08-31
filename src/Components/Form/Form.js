@@ -66,6 +66,11 @@ class Form extends Component {
                             let {imgURL, pName, pPrice} = this.state
                             // console.log(pName)
                             this.props.addToInventory(imgURL, pName, pPrice)
+                            this.setState({
+                                imgURL: '',
+                                pName: '',
+                                pPrice: ''
+                            })
                         }}
                     >Add to Inventory</button>
                 </div>

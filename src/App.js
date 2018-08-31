@@ -25,7 +25,9 @@ class App extends Component {
 
   addToInventory = (imgURL, pName, pPrice) => {
     axios.post('/api/product', {imgURL: imgURL, pName: pName, pPrice: pPrice})
-    // console.log(pName)
+    .then(res => this.setState({
+      productInventory: res.data
+    }))
   }
   
   render() {
