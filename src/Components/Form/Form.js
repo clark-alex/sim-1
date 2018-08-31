@@ -21,7 +21,7 @@ class Form extends Component {
     }
 
     handleCancel = () => {
-        console.log("you canceled!")
+        // console.log("you canceled!")
         this.setState({
             imgURL: '',
             pName: '',
@@ -31,7 +31,7 @@ class Form extends Component {
     }
     
     render () {
-        console.log('handleChange:', this.state)
+        // console.log('handleChange:', this.state)
         return (
             <div>
                 <h1>Form</h1>
