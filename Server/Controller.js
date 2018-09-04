@@ -12,6 +12,10 @@ module.exports = {
         })
     },
 
+    delete: (req, res) => {
+        console.log(req.params)
+    },
+
     addItem: (req, res) => {
         let {imgURL, pName, pPrice} = req.body
         const db = req.app.get('db')
@@ -26,7 +30,12 @@ module.exports = {
         // res.status(200).send()
         console.log(pName)
 
-    }
+    },
+
+    // updateProduct: (req, res) => {
+    //     let {str, index} = req.body
+    //     console.log({str, index})
+    // }
 
 
 

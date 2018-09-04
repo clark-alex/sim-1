@@ -10,9 +10,9 @@ class App extends Component {
     super (props)
 
     this.state = {
-      productInventory:[
-        
-      ]
+      productInventory:[],
+      saveButtonToggle: false,
+      addButtonToggle: false,
     }
   }
 
@@ -26,12 +26,23 @@ class App extends Component {
   addToInventory = (imgURL, pName, pPrice) => {
     axios.post('/api/product', {imgURL: imgURL, pName: pName, pPrice: pPrice})
     .then(res => this.setState({
-      productInventory: res.data
+      productInventory: res.data,
     }))
+    
   }
 
-  updateProduct = () => {
+ 
+  
+  updateProduct = (key) => {
+    console.log('i still work')
+    this.setState({
+      addButtonToggle: true
+    })
+  }
 
+  delete = (id) => {
+    console.log(id)
+    axios.delete(`/api/products/${id}`)
   }
   
   render() {
@@ -40,10 +51,14 @@ class App extends Component {
         <Header/>
         <Form
         addToInventory = {this.addToInventory}
-        updateProduct = {this.updateProduct}
+        saveButtonToggle = {this.state.saveButtonToggle}
+        addButtonToggle = {this.state.addButtonToggle}
         />
         <Dashboard
+        delete = {this.delete}
+        updateProduct= {this.updateProduct}
         productInventory = {this.state.productInventory}
+
         />
       </div>
     );

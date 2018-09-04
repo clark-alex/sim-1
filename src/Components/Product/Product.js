@@ -2,8 +2,9 @@ import React from 'react'
 import '../../App.css'
 
 function Product (props) {
-   let {productName, price, imageURL} = props
+   let {index, productName, price, imageURL,} = props
 
+console.log('product',props)
     return (
         <div >
             <div>
@@ -11,11 +12,15 @@ function Product (props) {
                     className = 'product_image'
                     src={imageURL} />
                 <h2>{productName}</h2>
-                <h2>Price: ${price}</h2>  
+                <h2>Price: ${price}</h2> 
+                <button
+                    onClick = {props.updateProduct}
+                >Edit</button>
+                <button
+                onClick = {() => {props.delete(index)}}
+                >Delete</button> 
             </div>
-            {/* <div>
-                <button>Edit Product</button>
-            </div> */}
+            
             <hr/>
         </div>
     )

@@ -9,7 +9,6 @@ class Form extends Component {
             pName: '',
             pPrice: '',
             addButtonToggle: false,
-            editButtonToggle: false
         }
         this.handleChange = this.handleChange.bind(this)
     }
@@ -34,11 +33,7 @@ class Form extends Component {
     
     }
 
-    handleEditClick = () => {
-        this.setState({
-            editButtonToggle: true
-        })
-    }
+    
     
     render () {
         // console.log('hi', this.state)
@@ -67,64 +62,32 @@ class Form extends Component {
                         onChange = {this.handleChange}
                         name = 'pPrice'/>
                 </div>
-                {
-                    this.state.addButtonToggle
-                    ?
-                        <div>
-                            <button
-                                onClick = {this.handleCancel}
-                             >Cancel
-                            </button>
-                            <button
-                                onClick = {() => {
-                                    let {imgURL, pName, pPrice} = this.state
-                                    // console.log(pName)
-                                    this.props.addToInventory(imgURL, pName, pPrice)
-                                    this.setState({
-                                         imgURL: '',
-                                         pName: '',
-                                         pPrice: ''
-                                    })
-                                }}
-                            >Add to Inventory
-                            </button>
-                        </div>
-                    :
-                    <div>
-                        <div>
-                            <button
-                                onClick = {this.handleCancel}
-                            >Cancel
-                            </button>
-                        </div>
-                        <div>
-                            <button
-                                onClick = {this.handleEditClick}
-                            >Edit An Existing Product
-                            </button>
-                            {
-                                this.state.editButtonToggle
-                                ?
-                                <div>
-                                    <input type="text"/>
-                                    <button
-                                        onClick = {()=> {
-                                            this.setState({editButtonToggle: false})
-                                        }
-                                    } 
-                                    >Save Edit
-                                    </button> 
-                                </div>
-                                :
-                                <p>Hi mom!</p>
-                            }
+                    <button
+                        onClick = {this.handleCancel}
+                    >Cancel
+                    </button>
+                    <button
+                        onClick = {() => {
+                            let {imgURL, pName, pPrice} = this.state
+                            // console.log(pName)
+                            this.props.addToInventory(imgURL, pName, pPrice)
+                             this.setState({
+                                    imgURL: '',
+                                    pName: '',
+                                    pPrice: ''
+                            })
                             
-                        </div>
-                    </div>
-                    
-                }
-                <hr/>
-            </div>
+                        }}
+                    >{
+                        this.props.addButtonToggle
+                        ?
+                        'Save Changes'
+                        :
+                        'Add Item'
+                    }
+                    </button> 
+                     <hr/>  
+                </div>
         )
     }
 }

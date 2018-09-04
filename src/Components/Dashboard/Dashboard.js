@@ -14,18 +14,19 @@ class Dashboard extends Component {
         let{productInventory} = this.props
         if (productInventory.length > 0) {
             let productInfo = productInventory.map((item, index) => {
-                let {product_name, price, image_url} = item
+                let {product_name, price, image_url,} = item
+
                 return (
-                    <div key = {index}>
-                        <Product
-                        productName = {product_name}
-                        price = {price}
-                        imageURL = {image_url}
-                        key = {this.key}
-                        />
-                        
-                    </div>
-                    
+                        <div key = {index}>
+                            <Product
+                            productName = {product_name}
+                            price = {price}
+                            imageURL = {image_url}
+                            index = {index}
+                            updateProduct = {this.props.updateProduct}
+                            delete = {this.props.delete}
+                            />
+                        </div>
                 )
             })
             return productInfo
