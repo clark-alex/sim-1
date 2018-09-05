@@ -13,7 +13,15 @@ module.exports = {
     },
 
     delete: (req, res) => {
-        console.log(req.params)
+        const db = req.app.get('db')
+        const {id} = req.params
+        db.delete_item([id])
+        .then(inventory=> res.status(200).send(inventory))
+        .catch(err=>{
+            console.log(err)
+            res.status(500).send('internal server error')
+        })
+
     },
 
     addItem: (req, res) => {
@@ -24,6 +32,7 @@ module.exports = {
                 res.status(200).send(inventory)
             })
             .catch(err => {
+                console.log(err)
                 res.status(500).send(err)
             })
 
@@ -32,10 +41,16 @@ module.exports = {
 
     },
 
-    // updateProduct: (req, res) => {
-    //     let {str, index} = req.body
-    //     console.log({str, index})
-    // }
+    updateProduct: (req, res) => {
+        const db = req.app.get('db')
+        const {pName,  pPrice, imgURL, id}= req.body
+        db.update_item([pName,  pPrice, imgURL, id])
+        .then(inventory => res.status(200).send(inventory))
+        .catch(err => {
+            console.log(err)
+            res.status(500).send('errrrror')
+        })
+    }
 
 
 
